@@ -8,11 +8,10 @@
       <b-input v-model="password" type="password"></b-input>
       <b-button @click="Reqest('login')">Login</b-button>
       <b-button @click="Reqest('')">INDEX</b-button>
-      <b-button @click="logoutAction">Log out</b-button>
+      <b-button @click="Reqest('logout')">Log out</b-button>
       <br>
       <b-button @click="socketTestAction">Test normal socket</b-button>
       <b-button @click="socketTestAction">Test restricted socket</b-button>
-      <nuxt-link class="nav-link" to="/news">Restricted page!</nuxt-link>
     </div>
   </section>
 </template>
@@ -30,16 +29,19 @@ export default {
       login: "",
       password: "",
       msg: "",
-      ip: "http://127.0.0.1:3000/"
+      ip: "http://localhost:3000/"
     };
   },
   methods: {
     Reqest: function(page) {
       var that = this;
-      Axios.get(this.ip + page)
+      Axios.get(this.ip + page, { withCredentials: true }) //withcredentials allow to set cookies from server side!!!!
         .then(response => {
-          that.msg = JSON.stringify(response.data) + "" + response.mail;
-          document.cookie = response.cookie
+          that.msg =
+            JSON.stringify(response.data.data) +
+            " :::: MAIL(session): " +
+            response.data.mail;
+          // document.cookie = response.cookie
         })
         .catch(error => {
           console.log(error);
@@ -49,16 +51,6 @@ export default {
           // that.debugMsg = 'Final catch!'
           console.log("finally ping index");
         });
-    },
-    loginAction: function() {
-      // clk link -> send request to server:
-      // if no response or invalid auth -> don't allow redirect!
-      this.msg =
-        "send auth data to server. If they are ok -> set session data and back it here (cookie)";
-        this.Reqest('login')
-    },
-    logoutAction: function() {
-      this.msg = "log out user!";
     },
     socketTestAction: function() {
       this.msg =
