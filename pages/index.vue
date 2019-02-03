@@ -6,18 +6,21 @@
       <b-input v-model="login"></b-input>
       <br>Password:
       <b-input v-model="password" type="password"></b-input>
-      <b-button @click="Reqest('login')">Login</b-button>
       <b-button @click="Reqest('')">INDEX</b-button>
+      <b-button @click="Login">Login</b-button>
+      <b-button @click="Reqest('strict')">Strict</b-button>
       <b-button @click="Reqest('logout')">Log out</b-button>
       <br>
-      <b-button @click="socketTestAction">Test normal socket</b-button>
-      <b-button @click="socketTestAction">Test restricted socket</b-button>
+      <b-button @click="socketConnect">Socket connect</b-button>
+      <b-button @click="socketMsg">Socket test msg</b-button>
+      <b-button @click="disconnectSocket">DIsconnect socket</b-button>
     </div>
   </section>
 </template>
 
 <script>
 import Logo from "~/components/Logo.vue";
+import io from "~/plugins/socket.io.js";
 import Axios from "axios";
 
 export default {
@@ -26,13 +29,29 @@ export default {
   },
   data() {
     return {
-      login: "",
-      password: "",
+      login: "calemb@gmail.com",
+      password: "1234",
       msg: "",
-      ip: "http://localhost:3000/"
+      ip: "http://127.0.0.1:3000/",
+      socket: undefined
     };
   },
   methods: {
+    Login: function() {
+      var that = this;
+      Axios
+      .post(
+        this.ip + "login",
+        {
+          email: this.login
+        },
+        {
+          withCredentials: true
+        }
+      ).then(response => {
+        that.msg = JSON.stringify(response.data);
+      });
+    },
     Reqest: function(page) {
       var that = this;
       Axios.get(this.ip + page, { withCredentials: true }) //withcredentials allow to set cookies from server side!!!!
@@ -52,9 +71,31 @@ export default {
           console.log("finally ping index");
         });
     },
-    socketTestAction: function() {
+    socketConnect: function() {
+      this.socket = io("ws://127.0.01:3000");
+      // this.socket.connect();
+      // io.emit("login", function(messages) {
+      //   callback(null, {
+      //     messages,
+      //     message: ""
+      //   });
+      // });
       this.msg =
         "Should test if socket response properly: allow only few requests without login, and allow much more with sockets!";
+    },
+    socketMsg: function() {
+      if (typeof this.socket !== "undefined") {
+        this.socket.emit("msg", "test msg content", function(data) {
+          // args are sent in order to acknowledgement function
+          console.log(data); // data will be 'tobi says woot'
+        });
+        console.log("tried to emit!");
+      } else {
+        console.log("socket is undefined!");
+      }
+    },
+    disconnectSocket: function() {
+      this.socket.disconnect();
     }
   }
 };
