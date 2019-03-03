@@ -6,14 +6,16 @@
       <b-input v-model="login"></b-input>
       <br>Password:
       <b-input v-model="password" type="password"></b-input>
+      <br>Spawn link below only if user already register<br>
+      <nuxt-link class="nav-link" to="/game">Game</nuxt-link>
+
       <b-button @click="Reqest('')">INDEX</b-button>
       <b-button @click="Login">Login</b-button>
-      <b-button @click="Reqest('strict')">Strict</b-button>
       <b-button @click="Reqest('logout')">Log out</b-button>
-      <br>
+      <br><br>
       <b-button @click="socketConnect">Socket connect</b-button>
       <b-button @click="socketMsg">Socket test msg</b-button>
-      <b-button @click="disconnectSocket">DIsconnect socket</b-button>
+      <b-button @click="disconnectSocket">Disconnect socket</b-button>
     </div>
   </section>
 </template>
@@ -39,8 +41,7 @@ export default {
   methods: {
     Login: function() {
       var that = this;
-      Axios
-      .post(
+      Axios.post(
         this.ip + "login",
         {
           email: this.login
@@ -49,7 +50,8 @@ export default {
           withCredentials: true
         }
       ).then(response => {
-        that.msg = JSON.stringify(response.data);
+        this.msg = response.data.location + response.status;
+        window.location = response.data.location;
       });
     },
     Reqest: function(page) {
