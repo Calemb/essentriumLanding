@@ -44,7 +44,8 @@ export default {
       Axios.post(
         this.ip + "login",
         {
-          email: this.login
+          email: this.login,
+          password: this.password,
         },
         {
           withCredentials: true
