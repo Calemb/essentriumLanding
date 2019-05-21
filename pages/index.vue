@@ -6,16 +6,16 @@
       <b-input v-model="login"></b-input>
       <br>Password:
       <b-input v-model="password" type="password"></b-input>
-      <br>Spawn link below only if user already register<br>
+<!--      <br>Spawn link below only if user already register<br> -->
       <nuxt-link class="nav-link" to="/game">Game</nuxt-link>
 
       <b-button @click="Reqest('')">INDEX</b-button>
       <b-button @click="Login">Login</b-button>
       <b-button @click="Reqest('logout')">Log out</b-button>
-      <br><br>
-      <b-button @click="socketConnect">Socket connect</b-button>
+      <!-- <br><br> -->
+      <!-- <b-button @click="socketConnect">Socket connect</b-button>
       <b-button @click="socketMsg">Socket test msg</b-button>
-      <b-button @click="disconnectSocket">Disconnect socket</b-button>
+      <b-button @click="disconnectSocket">Disconnect socket</b-button> -->
     </div>
   </section>
 </template>
@@ -105,6 +105,10 @@ export default {
 </script>
 
 <style>
+body {
+
+  background-color: #000;
+}
 .container {
   margin: 0 auto;
   min-height: 100vh;
