@@ -11,6 +11,10 @@
         href="http://how-to-dev.com/essentrium"
         class="btn btn-dark"
       >Dev Blog</a>
+      <nuxt-link
+        to="/news"
+        class="btn btn-dark"
+      >News</nuxt-link>
       <div id="social">
         <a
           class="btn btn-dark"
@@ -31,7 +35,7 @@
       >
       <br>
       <br>
-      <a
+      <!-- <a
         class="bmc-button"
         target="_blank"
         href="https://www.buymeacoffee.com/3Dt0Scriv"
@@ -40,10 +44,12 @@
           src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
           alt="Buy me a coffee"
         >
-        <span style="margin-left:5px">Buy me a coffee</span></a>
+        <span style="margin-left:5px">Buy me a coffee</span>
+      </a> -->
+      <nuxt />
     </div>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
+    <!-- <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=UA-137877001-1"
     >
@@ -56,9 +62,8 @@
     }
     gtag("js", new Date());
     gtag("config", "UA-137877001-1");
-    </script>
+    </script> -->
 
-    <nuxt />
   </div>
 </template>
 
@@ -99,7 +104,7 @@ html {
 .button--grey {
   display: inline-block;
   border-radius: 4px;
-  border: 1px solid #35495e;
+  border: 0px solid #35495e;
   color: #35495e;
   text-decoration: none;
   padding: 10px 30px;
@@ -112,17 +117,18 @@ html {
 }
 #app {
   border: 1px solid transparent;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   background-color: #000;
   text-align: center;
   background-image: url("../static/bg.png");
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
+  /* border: 0px solid blue; */
 }
 #content {
-  /* border: 1px solid red; */
+  border: 0px solid red;
   margin-top: 5vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }

@@ -1,29 +1,33 @@
 <template>
-  <section class="container">
-    <div>
-      <p>{{ msg }}</p>
-      <br>Login:
-      <b-input v-model="login"></b-input>
-      <br>Password:
-      <b-input v-model="password" type="password"></b-input>
-<!--      <br>Spawn link below only if user already register<br> -->
-      <nuxt-link class="nav-link" to="/game">Game</nuxt-link>
+  <div class="loginForm">
+    <p>{{ msg }}</p>
+    <span>Login:</span>
+    <br>
+    <b-input
+      v-model="login"
+      type="text"
+    ></b-input>
+    <br>
+    <span>Password:</span>
+    <br>
+    <b-input
+      v-model="password"
+      type="password"
+    ></b-input>
+    <!--      <br>Spawn link below only if user already register<br> -->
+    <!-- <nuxt-link class="nav-link" to="/game">Game</nuxt-link> -->
 
-      <b-button @click="Reqest('')">INDEX</b-button>
-      <b-button @click="Login">Login</b-button>
-      <b-button @click="Reqest('logout')">Log out</b-button>
-      <!-- <br><br> -->
-      <!-- <b-button @click="socketConnect">Socket connect</b-button>
-      <b-button @click="socketMsg">Socket test msg</b-button>
-      <b-button @click="disconnectSocket">Disconnect socket</b-button> -->
-    </div>
-  </section>
+    <!-- <b-button @click="Reqest('')">INDEX</b-button> -->
+    <br><br>
+    <b-button @click="Login">Login</b-button>
+  </div>
 </template>
 
 <script>
 import Logo from "~/components/Logo.vue";
 import io from "~/plugins/socket.io.js";
 import Axios from "axios";
+import config from "~/local_modules/config";
 
 export default {
   components: {
@@ -34,7 +38,7 @@ export default {
       login: "",
       password: "",
       msg: "",
-      ip: "http://51.38.129.191/",
+      ip: config.ip,
       socket: undefined
     };
   },
@@ -45,7 +49,7 @@ export default {
         this.ip + "login",
         {
           email: this.login,
-          password: this.password,
+          password: this.password
         },
         {
           withCredentials: true
@@ -104,20 +108,37 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 body {
-
-  background-color: #000;
+  /* background-color: #000; */
 }
-.container {
+.loginForm input {
+  /* max-width: 79%; */
+  width: 25%;
+  margin: 7px auto;
+}
+span {
+  border: 0px solid green;
+}
+div.loginForm {
+  /* padding: 400px; */
+  /* width: 50%;
+  margin: 0px auto;
+  overflow: hidden; */
+  margin: 25px 0px;
+  border: 0px solid greenyellow;
+  border-top: 1px groove white;
+  /* padding: 50px; */
+}
+/* .container {
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-}
-
+  text-align: center; */
+/* } */
+/* 
 .title {
   font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -138,5 +159,5 @@ body {
 
 .links {
   padding-top: 15px;
-}
+} */
 </style>
