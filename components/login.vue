@@ -45,10 +45,18 @@ export default {
         {
           withCredentials: true
         }
-      ).then(response => {
-        this.msg = response.data.location + response.status;
-        window.location = response.data.location;
-      });
+      )
+        .then(response => {
+          this.msg = response.data.location + response.status;
+          if (typeof response.data.location !== "undefined") {
+            setTimeout(() => {
+              window.location = response.data.location;
+            }, 5000);
+          }
+        })
+        .catch(reason => {
+          this.msg = reason;
+        });
     },
     Reqest: function(page) {
       var that = this;
