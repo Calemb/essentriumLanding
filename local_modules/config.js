@@ -4,7 +4,9 @@ const config = {
     ip: "http://essentrium.net/"
   },
   dev: {
-    ip: "http://127.0.0.1:3001/"
+    ip: 'http://127.0.0.1:3001/'
   }
 }
-module.exports = config.dev
+export default config.dev
+
+// modules.export = config.dev
