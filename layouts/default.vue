@@ -178,10 +178,6 @@ a img {
 .loginForm-lg {
   margin-left: 5vw;
 }
-.loginForm-sm {
-  /* margin-right: 5vw; */
-  /* border: 1px solid red; */
-}
 .bmc-button {
   line-height: 36px !important;
   height: 37px !important;
