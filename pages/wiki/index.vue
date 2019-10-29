@@ -16,7 +16,7 @@
       <br>
       Your gameplay is your <b>answer</b>.
     </p>
-    <h3>#TBBG</h3>>
+    <h3>#TBBG</h3>
     <p>
       It's Text Based Browser Game.
       <br>
