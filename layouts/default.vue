@@ -67,7 +67,7 @@
         id="logo"
         alt="essentrium.net"
       >
-      <p class="hashtags">#essentrium #tbbg #rpg #browsergame #postapo</p>
+      <p class="hashtags">#essentrium #tbbg #rpg #browsergame #postpostapo</p>
 
       <!-- <h1>essentrium</h1> -->
       <!-- <p class="sentence">Do you think, this world failed?</p>
