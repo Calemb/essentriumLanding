@@ -24,7 +24,7 @@ import Axios from "axios";
 import config from "~/local_modules/config";
 
 export default {
-  data() {
+  data () {
     return {
       login: "",
       password: "",
@@ -34,7 +34,7 @@ export default {
     };
   },
   methods: {
-    Login: function() {
+    Login: function () {
       var that = this;
       Axios.post(
         this.ip + "login",
@@ -58,7 +58,7 @@ export default {
           this.msg = reason;
         });
     },
-    Reqest: function(page) {
+    Reqest: function (page) {
       var that = this;
       Axios.get(this.ip + page, { withCredentials: true }) //withcredentials allow to set cookies from server side!!!!
         .then(response => {
