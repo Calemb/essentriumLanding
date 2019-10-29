@@ -67,7 +67,7 @@
         id="logo"
         alt="essentrium.net"
       >
-      <p class="hashtags">#essentrium #tbbg #rpg #browsergame #postpostapo</p>
+      <p class="hashtags">#essentrium #tbbg #rpg #browsergame #postapo</p>
 
       <!-- <h1>essentrium</h1> -->
       <!-- <p class="sentence">Do you think, this world failed?</p>
@@ -75,6 +75,7 @@
       <br>
       <p class="sentence">Create this world better place for next generation!</p> -->
       <nuxt />
+      # {{ buildVersion }}
     </div>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script
@@ -90,14 +91,23 @@
     }
     gtag("js", new Date());
     gtag("config", "UA-137877001-1");
-    </script> -->
+    </script>-->
   </div>
 </template>
 <script>
 import login from "~/components/login";
+import Version from "~/components/version";
 
 export default {
-  components: { login }
+  components: {
+    login,
+    Version
+  },
+  computed: {
+    buildVersion: function() {
+      return Version.buildVersion();
+    }
+  }
 };
 </script>
 
