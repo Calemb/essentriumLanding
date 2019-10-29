@@ -18,6 +18,10 @@
           <b-navbar-nav>
             <li>
               <br class="d-lg-none" />
+              <nuxt-link
+                to="/wiki"
+                class="btn btn-color btn-anim devBlogLink navItem"
+              >Wiki</nuxt-link>
               <a
                 href="http://how-to-dev.com/essentrium"
                 class="btn btn-color btn-anim devBlogLink navItem"
@@ -62,11 +66,16 @@
         href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext"
         rel="stylesheet"
       >
-      <img
-        src="logo.png"
-        id="logo"
-        alt="essentrium.net"
+      <nuxt-link
+        to="/"
+        id="home-link"
       >
+        <img
+          src="logo.png"
+          id="logo"
+          alt="essentrium.net"
+        >
+      </nuxt-link>
       <p class="hashtags">#essentrium #tbbg #rpg #browsergame #postapo</p>
 
       <!-- <h1>essentrium</h1> -->
@@ -75,7 +84,7 @@
       <br>
       <p class="sentence">Create this world better place for next generation!</p> -->
       <nuxt />
-      # {{ buildVersion }}
+      v #{{ buildVersion }}
     </div>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script
@@ -104,7 +113,7 @@ export default {
     Version
   },
   computed: {
-    buildVersion: function() {
+    buildVersion: function () {
       return Version.buildVersion();
     }
   }
@@ -132,7 +141,7 @@ a {
   border: 1px groove gray;
   font-variant: small-caps;
 }
-a img {
+.navbar-nav a img {
   width: 25px;
   color: #fff;
 }
@@ -166,8 +175,12 @@ a img {
   font-weight: bold;
   margin-right: 5%;
 }
+#home-link {
+border: 0px;
+}
 #logo {
   max-width: 70%;
+  border: 0px;
   /* border: 1px solid red; */
 }
 .loginForm {
