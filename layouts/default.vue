@@ -30,19 +30,19 @@
                 class="btn btn-color btn-anim navItem"
                 href="https://www.instagram.com/essentrium/"
               >
-                <img src="insta.png">
+                <img src="/insta.png">
               </a>
               <a
                 class="btn btn-color btn-anim navItem"
                 href="https://twitter.com/essentrium"
               >
-                <img src="twitter.png">
+                <img src="/twitter.png">
               </a>
               <a
                 class="btn btn-color btn-anim navItem"
                 href="https://www.facebook.com/essentrium"
               >
-                <img src="fb.png">
+                <img src="/fb.png">
               </a>
               <a
                 class="bmc-button navItem"
@@ -71,7 +71,7 @@
         id="home-link"
       >
         <img
-          src="logo.png"
+          src="/logo.png"
           id="logo"
           alt="essentrium.net"
         >
