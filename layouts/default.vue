@@ -18,6 +18,10 @@
           <b-navbar-nav>
             <li>
               <br class="d-lg-none" />
+              <nuxt-link
+                to="/wiki"
+                class="btn btn-color btn-anim devBlogLink navItem"
+              >Wiki</nuxt-link>
               <a
                 href="http://how-to-dev.com/essentrium"
                 class="btn btn-color btn-anim devBlogLink navItem"
@@ -62,12 +66,17 @@
         href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext"
         rel="stylesheet"
       >
-      <img
-        src="logo.png"
-        id="logo"
-        alt="essentrium.net"
+      <nuxt-link
+        to="/"
+        id="home-link"
       >
-      <p class="hashtags">#essentrium #tbbg #rpg #browsergame #postapo</p>
+        <img
+          src="logo.png"
+          id="logo"
+          alt="essentrium.net"
+        >
+      </nuxt-link>
+      <p class="hashtags">#essentrium #tbbg #rpg #browsergame #postpostapo</p>
 
       <!-- <h1>essentrium</h1> -->
       <!-- <p class="sentence">Do you think, this world failed?</p>
@@ -75,6 +84,7 @@
       <br>
       <p class="sentence">Create this world better place for next generation!</p> -->
       <nuxt />
+      v #{{ buildVersion }}
     </div>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script
@@ -90,14 +100,23 @@
     }
     gtag("js", new Date());
     gtag("config", "UA-137877001-1");
-    </script> -->
+    </script>-->
   </div>
 </template>
 <script>
 import login from "~/components/login";
+import Version from "~/components/version";
 
 export default {
-  components: { login }
+  components: {
+    login,
+    Version
+  },
+  computed: {
+    buildVersion: function () {
+      return Version.buildVersion();
+    }
+  }
 };
 </script>
 
@@ -122,7 +141,7 @@ a {
   border: 1px groove gray;
   font-variant: small-caps;
 }
-a img {
+.navbar-nav a img {
   width: 25px;
   color: #fff;
 }
@@ -156,8 +175,12 @@ a img {
   font-weight: bold;
   margin-right: 5%;
 }
+#home-link {
+border: 0px;
+}
 #logo {
   max-width: 70%;
+  border: 0px;
   /* border: 1px solid red; */
 }
 .loginForm {
@@ -167,10 +190,6 @@ a img {
 }
 .loginForm-lg {
   margin-left: 5vw;
-}
-.loginForm-sm {
-  /* margin-right: 5vw; */
-  /* border: 1px solid red; */
 }
 .bmc-button {
   line-height: 36px !important;

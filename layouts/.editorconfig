@@ -1,0 +1,62 @@
+{
+    "editor.tabSize": 2,
+    "window.zoomLevel": 0,
+    "breadcrumbs.enabled": true,
+    "javascript.preferences.quoteStyle": 'single',
+    "vetur.format.defaultFormatter.js": "vscode-typescript",
+    "vetur.format.defaultFormatter.html": "js-beautify-html",
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "eslint.autoFixOnSave": true,
+
+    "eslint.validate": [
+        {
+            "language": "vue",
+            "autoFix": true
+        },
+        {
+            "language": "html",
+            "autoFix": true
+        },
+        {
+            "language": "javascript",
+            "autoFix": true
+        }
+    ],
+    //   },
+    "todo-tree.tags": [
+        "TODO",
+        "FIXME",
+        "ASSUME",
+        "WORKING",
+        "FEATURE"
+    ],
+    "todo-tree.customHighlight": {
+        "TODO": {
+            "icon": "alert",
+            "iconColour": "yellow",
+            "foreground": "yellow"
+        },
+        "FIXME": {
+            "icon": "bug",
+            "foreground": "red",
+            "iconColour": "red"
+        },
+        "ASSUME": {
+            "icon": "info",
+            "foreground": "green",
+            "iconColour": "green"
+        },
+        "WORKING": {
+            "icon": "flame",
+            "foreground": "orange",
+            "iconColour": "orange"
+        },
+        "FEATURE": {
+            "icon": "bookmark",
+            "foreground": "gray",
+            "iconColour": "gray"
+        }
+    },
+    "git.autofetch": true,
+    "git.confirmSync": false
+}
